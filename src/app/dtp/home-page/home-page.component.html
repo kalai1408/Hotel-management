@@ -1,0 +1,48 @@
+<!-- Video Background Section -->
+<header class="hero-section">
+  <video #bgVideo autoplay muted loop playsinline class="bg-video">
+    <source src="assets/Walkthrough Edit_V7.mp4" type="video/mp4" />
+  </video>
+  <div class="overlay"></div>
+</header>
+
+<!-- Explore Section -->
+<section class="explore-section text-center py-5" #exploreSection>
+  <div class="container">
+    <h2 class="explore-title">EXPLORE NOW</h2>
+    <div class="explore-divider"></div>
+    <p class="section-description px-4">
+      From a luxury urban sanctum to the halls of royalty,<br />
+      an idyllic resort to a jungle retreat—<br />
+      discover timeless experiences woven in elegance and serenity.
+    </p>
+  </div>
+</section>
+
+<!-- Carousel Section -->
+<div
+  class="carousel-wrapper"
+  [ngStyle]="{
+    'background-image': 'url(' + cards[activeIndex].background + ')'
+  }"
+>
+  <div class="overlay">
+    <button class="nav left" (click)="scrollLeft()">‹</button>
+
+    <div class="carousel" #carousel>
+      <div
+        class="card"
+        *ngFor="let card of cards; let i = index"
+        [class.active]="i === activeIndex"
+      >
+        <img [src]="card.image" />
+        <div class="description">
+          <h2 class="title">{{ card.title }}</h2>
+          <p>{{ card.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="nav right" (click)="scrollRight()">›</button>
+  </div>
+</div>
